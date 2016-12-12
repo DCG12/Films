@@ -21,13 +21,17 @@ public class createSQLite {
                 stmt = c.createStatement();
                 String sql = "CREATE TABLE MOVIES " +
                         "(id            INT     PRIMARY KEY     NOT NULL," +
-                        " titulo         TEXT                    NOT NULL, " +
-                        " fecha  DATE                    NOT NULL)";
+                        " titulo        TEXT                    NOT NULL, " +
+                        " fecha         DATE                    NOT NULL)";
                 stmt.executeUpdate(sql);
-                sql = "CREATE TABLE Actores " +
+                sql = "CREATE TABLE ACTORES " +
                         "(id              INT       PRIMARY KEY    NOT NULL," +
-                        " Nombre          CHAR(50)                 NOT NULL, " +
-                        " Personaje       CHAR(50)                 NOT NULL )";
+                        " Nombre          CHAR(50)                 NOT NULL )";
+                stmt.executeUpdate(sql);
+                sql = "CREATE TABLE AXM " +
+                        "(id              INT       PRIMARY KEY    NOT NULL," +
+                        " Nombre          CHAR(50)                 NOT NULL," +
+                        " Personaje       CHAR(50)                  )";
                 stmt.executeUpdate(sql);
                 stmt.close();
                 c.close();

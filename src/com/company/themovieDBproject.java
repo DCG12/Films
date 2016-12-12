@@ -27,8 +27,8 @@ public class themovieDBproject {
         rd.close();
         return result.toString();
     }
-
-    public static void main(String[] args) {
+/*
+    public static void pelis(String[] args) {
         String s = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
@@ -43,25 +43,44 @@ public class themovieDBproject {
                 System.out.println("La peli " + film + " no existeix");
             }
         }
-    }
+    }*/
 
-    public static void peticion2() {
+
+/*    public static void actores(String[] args) {
         String c = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
         for (int i = 0; i < 40; i++) {
             int peli = 600 + i;
             String film = String.valueOf(peli);
-            String peticio2 = "https://api.themoviedb.org/3/movie/" + film + "/credits/?api_key=" + api_key;
+            String peticio2 = "https://api.themoviedb.org/3/person/" + film + "?api_key=" + api_key;
             try {
                 c = getHTML(peticio2);
                 SJC(c);
             } catch (Exception e) {
-                System.out.println("La peli " + film + " no existeix");
+                System.out.println("El actor " + film + " no existeix");
+            }
+        }
+    }*/
+
+    public static void main(String[] args) {
+        String m = "";
+        String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
+
+        for (int i = 0; i < 40; i++) {
+            int peli = 600 + i;
+            String film = String.valueOf(peli);
+            //https://api.themoviedb.org/3/mobie/600/credits/?api_key=22dc8ee0cdffaed336cb797e630ad06f
+            String peticio3 = "https://api.themoviedb.org/3/movie/" + film + "/credits?api_key=22dc8ee0cdffaed336cb797e630ad06f";
+            try {
+                m = getHTML(peticio3);
+                SJP(m);
+            } catch (Exception e) {
+                System.out.println("La pelicula " + film + " no existeix");
             }
         }
     }
-
+/*
     public static void SJS(String cadena) {
 
         Object obj02 = JSONValue.parse(cadena);
@@ -73,7 +92,19 @@ public class themovieDBproject {
 
     }
 
+
     public static void SJC(String cadena) {
+
+        Object obj02 = JSONValue.parse(cadena);
+        JSONObject arra02 = (JSONObject) obj02;
+        System.out.println(arra02.get("name"));
+
+
+        insertSQLite.listaActores(Integer.parseInt(arra02.get("id").toString()), arra02.get("name").toString());
+
+    }*/
+
+    public static void SJP(String cadena) {
         Object obj02 = JSONValue.parse(cadena);
         JSONObject arra02 = (JSONObject) obj02;
         JSONArray arra03 = (JSONArray) arra02.get("cast");
@@ -81,8 +112,8 @@ public class themovieDBproject {
         for (int i = 0; i < arra03.size(); i++) {
 
             JSONObject jb = (JSONObject) arra03.get(i);
-            System.out.println(jb.get("character") + "<-->" + jb.get("name"));
-            insertSQLite.listaActores(jb.get("id"), jb.get("name"), jb.get("character"));
+            System.out.println(jb.get("character") + " <--> " + jb.get("name"));
+            insertSQLite.listaAXM(jb.get("id"), jb.get("name"), jb.get("character"));
         }
     }
 }

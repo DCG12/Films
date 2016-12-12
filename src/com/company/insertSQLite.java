@@ -42,7 +42,7 @@ public class insertSQLite {
         }
         System.out.println("Records created successfully");
     }
-    public static void listaActores(Object id, Object name, Object character) {
+    public static void listaActores(int id, String name) {
 
         Connection c = null;
         Statement stmt = null;
@@ -55,13 +55,12 @@ public class insertSQLite {
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO MOVIES (id, Nombre, Personaje) " +
-                    "VALUES" + "(?, ?, ?);";
+            String sql = "INSERT INTO ACTORES (id, Nombre) " +
+                    "VALUES" + "(?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, (Integer) id);
-            preparedstament.setString(2, (String) name);
-            preparedstament.setString(3, (String) character);
+            preparedstament.setInt(1, id);
+            preparedstament.setString(2, name);
 
             preparedstament.executeUpdate();
 
@@ -76,4 +75,36 @@ public class insertSQLite {
     }
 
 
+    public static void listaAXM(Object id, Object name, Object character) {
+
+        Connection c = null;
+        Statement stmt = null;
+        try {
+
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+
+            String sql = "INSERT INTO AXM (id, Nombre, Personaje) " +
+                    "VALUES" + "(?, ?, ?);";
+
+            PreparedStatement preparedstament = c.prepareStatement(sql);
+            preparedstament.setInt(1, Math.toIntExact((Long) id));
+            preparedstament.setString(2, String.valueOf(name));
+            preparedstament.setString(2, String.valueOf(character));
+
+            preparedstament.executeUpdate();
+
+            stmt.close();
+            c.commit();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records created successfully");
+    }
 }
