@@ -67,7 +67,7 @@ public class themovieDBproject {
         String m = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 1000; i++) {
             int peli = 600 + i;
             String film = String.valueOf(peli);
             //https://api.themoviedb.org/3/mobie/600/credits/?api_key=22dc8ee0cdffaed336cb797e630ad06f

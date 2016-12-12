@@ -31,7 +31,7 @@ public class createSQLite {
                 sql = "CREATE TABLE AXM " +
                         "(id              INT       PRIMARY KEY    NOT NULL," +
                         " Nombre          CHAR(50)                 NOT NULL," +
-                        " Personaje       CHAR(50)                  )";
+                        " Personaje       CHAR(50)                 )";
                 stmt.executeUpdate(sql);
                 stmt.close();
                 c.close();
