@@ -42,7 +42,7 @@ public class insertSQLite {
         }
         System.out.println("Records created successfully");
     }
-    public static void listaActores(int id, String name) {
+    public static void listaActores(Object id, Object name) {
 
         Connection c = null;
         Statement stmt = null;
@@ -59,8 +59,8 @@ public class insertSQLite {
                     "VALUES" + "(?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, id);
-            preparedstament.setString(2, name);
+            preparedstament.setInt(1, Math.toIntExact((Long) id));
+            preparedstament.setString(2, String.valueOf(name));
 
             preparedstament.executeUpdate();
 

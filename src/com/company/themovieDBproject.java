@@ -40,7 +40,7 @@ public class themovieDBproject {
         String s = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 50; i++) {
             int peli = 600 + i;
             String film = String.valueOf(peli);
             String peticio = "https://api.themoviedb.org/3/movie/" + film + "?api_key=" + api_key;
@@ -57,10 +57,10 @@ public class themovieDBproject {
         String c = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
-        for (int i = 0; i < 100; i++) {
-            int peli = 8600 + i;
+        for (int i = 0; i < 50; i++) {
+            int peli = 600 + i;
             String film = String.valueOf(peli);
-            String peticio2 = "https://api.themoviedb.org/3/person/" + film + "?api_key=" + api_key;
+            String peticio2 = "https://api.themoviedb.org/3/movie/" + film + "/credits?api_key=22dc8ee0cdffaed336cb797e630ad06f";
             try {
                 c = getHTML(peticio2);
                 SJC(c);
@@ -74,10 +74,9 @@ public class themovieDBproject {
         String m = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 50; i++) {
             int peli = 600 + i;
             String film = String.valueOf(peli);
-            //https://api.themoviedb.org/3/mobie/600/credits/?api_key=22dc8ee0cdffaed336cb797e630ad06f
             String peticio3 = "https://api.themoviedb.org/3/movie/" + film + "/credits?api_key=22dc8ee0cdffaed336cb797e630ad06f";
             try {
                 m = getHTML(peticio3);
@@ -104,12 +103,16 @@ public class themovieDBproject {
 
         Object obj02 = JSONValue.parse(cadena);
         JSONObject arra02 = (JSONObject) obj02;
-        System.out.println(arra02.get("name"));
+        JSONArray arra03 = (JSONArray) arra02.get("cast");
 
+        for (int i = 0; i < arra03.size(); i++) {
 
-        insertSQLite.listaActores(Integer.parseInt(arra02.get("id").toString()), arra02.get("name").toString());
-
+            JSONObject jb = (JSONObject) arra03.get(i);
+            insertSQLite.listaActores(jb.get("id"), jb.get("name"));
+        }
     }
+
+
 
     public static void SJP(String cadena) {
         Object obj02 = JSONValue.parse(cadena);
@@ -119,7 +122,6 @@ public class themovieDBproject {
         for (int i = 0; i < arra03.size(); i++) {
 
             JSONObject jb = (JSONObject) arra03.get(i);
-            System.out.println(jb.get("character") + " <--> " + jb.get("name"));
             insertSQLite.listaAXM(jb.get("id"), jb.get("name"), jb.get("character"));
         }
     }
