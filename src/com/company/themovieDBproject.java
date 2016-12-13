@@ -46,12 +46,12 @@ public class themovieDBproject {
     }*/
 
 
-/*    public static void actores(String[] args) {
+   public static void main(String[] args) {
         String c = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
-        for (int i = 0; i < 40; i++) {
-            int peli = 600 + i;
+        for (int i = 0; i < 100; i++) {
+            int peli = 8600 + i;
             String film = String.valueOf(peli);
             String peticio2 = "https://api.themoviedb.org/3/person/" + film + "?api_key=" + api_key;
             try {
@@ -61,8 +61,8 @@ public class themovieDBproject {
                 System.out.println("El actor " + film + " no existeix");
             }
         }
-    }*/
-
+    }
+/*
     public static void main(String[] args) {
         String m = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
@@ -79,7 +79,7 @@ public class themovieDBproject {
                 System.out.println("La pelicula " + film + " no existeix");
             }
         }
-    }
+    }*/
 /*
     public static void SJS(String cadena) {
 
@@ -92,7 +92,7 @@ public class themovieDBproject {
 
     }
 
-
+*/
     public static void SJC(String cadena) {
 
         Object obj02 = JSONValue.parse(cadena);
@@ -102,8 +102,8 @@ public class themovieDBproject {
 
         insertSQLite.listaActores(Integer.parseInt(arra02.get("id").toString()), arra02.get("name").toString());
 
-    }*/
-
+    }
+/*
     public static void SJP(String cadena) {
         Object obj02 = JSONValue.parse(cadena);
         JSONObject arra02 = (JSONObject) obj02;
@@ -115,5 +115,5 @@ public class themovieDBproject {
             System.out.println(jb.get("character") + " <--> " + jb.get("name"));
             insertSQLite.listaAXM(jb.get("id"), jb.get("name"), jb.get("character"));
         }
-    }
+    }*/
 }

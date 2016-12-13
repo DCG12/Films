@@ -17,7 +17,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -49,7 +49,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -82,7 +82,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -94,7 +94,7 @@ public class insertSQLite {
             PreparedStatement preparedstament = c.prepareStatement(sql);
             preparedstament.setInt(1, Math.toIntExact((Long) id));
             preparedstament.setString(2, String.valueOf(name));
-            preparedstament.setString(2, String.valueOf(character));
+            preparedstament.setString(3, String.valueOf(character));
 
             preparedstament.executeUpdate();
 
