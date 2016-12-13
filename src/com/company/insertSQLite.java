@@ -17,7 +17,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -49,7 +49,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -82,7 +82,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 

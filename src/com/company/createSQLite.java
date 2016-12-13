@@ -15,7 +15,7 @@ public class createSQLite {
             Statement stmt = null;
             try {
                 Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:Films2.db");
+                c = DriverManager.getConnection("jdbc:sqlite:Films.db");
                 System.out.println("Opened database successfully");
 
                 stmt = c.createStatement();

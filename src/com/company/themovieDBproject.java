@@ -14,6 +14,8 @@ import java.net.URL;
  */
 public class themovieDBproject {
 
+
+
     public static String getHTML(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();
         URL url = new URL(urlToRead);
@@ -27,8 +29,14 @@ public class themovieDBproject {
         rd.close();
         return result.toString();
     }
-/*
-    public static void pelis(String[] args) {
+
+    public static void main(String[] args){
+        pelis();
+        actores();
+        personajes();
+    }
+
+    public static void pelis() {
         String s = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
@@ -43,10 +51,9 @@ public class themovieDBproject {
                 System.out.println("La peli " + film + " no existeix");
             }
         }
-    }*/
+    }
 
-
-   public static void main(String[] args) {
+   public static void actores() {
         String c = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
@@ -62,8 +69,8 @@ public class themovieDBproject {
             }
         }
     }
-/*
-    public static void main(String[] args) {
+
+    public static void personajes() {
         String m = "";
         String api_key = "22dc8ee0cdffaed336cb797e630ad06f";
 
@@ -79,8 +86,8 @@ public class themovieDBproject {
                 System.out.println("La pelicula " + film + " no existeix");
             }
         }
-    }*/
-/*
+    }
+
     public static void SJS(String cadena) {
 
         Object obj02 = JSONValue.parse(cadena);
@@ -92,7 +99,7 @@ public class themovieDBproject {
 
     }
 
-*/
+
     public static void SJC(String cadena) {
 
         Object obj02 = JSONValue.parse(cadena);
@@ -103,7 +110,7 @@ public class themovieDBproject {
         insertSQLite.listaActores(Integer.parseInt(arra02.get("id").toString()), arra02.get("name").toString());
 
     }
-/*
+
     public static void SJP(String cadena) {
         Object obj02 = JSONValue.parse(cadena);
         JSONObject arra02 = (JSONObject) obj02;
@@ -115,5 +122,5 @@ public class themovieDBproject {
             System.out.println(jb.get("character") + " <--> " + jb.get("name"));
             insertSQLite.listaAXM(jb.get("id"), jb.get("name"), jb.get("character"));
         }
-    }*/
+    }
 }
