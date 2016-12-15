@@ -117,11 +117,8 @@ public class themovieDBproject {
         for (int i = 0; i < arra03.size(); i++) {
 
             JSONObject jb = (JSONObject) arra03.get(i);
-            Personajes p = new Personajes();
-            p.setidMovie(arra02.get("id"));
-            p.setidActor(jb.get("id"));
-            p.setPersonaje(jb.get("character"));
-            //insertSQLite.listaAXM(arra02.get("id") ,jb.get("id"), jb.get("name"), jb.get("character"));
+
+            insertSQLite.listaAXM(arra02.get("id") ,jb.get("id"), jb.get("name"), jb.get("character"));
         }
     }
 }

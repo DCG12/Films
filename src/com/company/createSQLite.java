@@ -15,22 +15,23 @@ public class createSQLite {
             Statement stmt = null;
             try {
                 Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+                c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
                 System.out.println("Opened database successfully");
 
                 stmt = c.createStatement();
                 String sql = "CREATE TABLE MOVIES " +
-                        "(id            INT     PRIMARY KEY     NOT NULL," +
+                        "(idMovie            INT     PRIMARY KEY     NOT NULL," +
                         " titulo        TEXT                    NOT NULL, " +
                         " fecha         DATE                    NOT NULL)";
                 stmt.executeUpdate(sql);
                 sql = "CREATE TABLE ACTORES " +
-                        "(id              INT       PRIMARY KEY    NOT NULL," +
+                        "(idAct              INT       PRIMARY KEY    NOT NULL," +
                         " Nombre          CHAR(50)                 NOT NULL )";
                 stmt.executeUpdate(sql);
                 sql = "CREATE TABLE AXM " +
                         "(movieId         INT                           NOT NULL," +
                         "idActor          INT                           NOT NULL," +
+                        "Actor            TEXT                           NOT NULL," +
                         " Personaje       CHAR(50)          PRIMARY KEY NOT NULL)";
                 stmt.executeUpdate(sql);
                 stmt.close();

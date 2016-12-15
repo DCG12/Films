@@ -17,13 +17,13 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO MOVIES (id, titulo, fecha) " +
+            String sql = "INSERT INTO MOVIES (idMovie, titulo, fecha) " +
                     "VALUES" + "(?, ?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
@@ -49,13 +49,13 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO ACTORES (id, Nombre) " +
+            String sql = "INSERT INTO ACTORES (idAct, Nombre) " +
                     "VALUES" + "(?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
@@ -75,29 +75,27 @@ public class insertSQLite {
     }
 
 
-    public static void listaAXM(Object movieId, Object id, Object character) {
+    public static void listaAXM(Object movieId, Object id, Object name, Object character) {
 
         Connection c = null;
         Statement stmt = null;
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO AXM ( movieId ,id, Personaje) " +
-                    "VALUES" + "(?, ?, ?);";
-
-            Personajes p = new Personajes();
+            String sql = "INSERT INTO AXM ( movieId ,idActor, Actor, Personaje) " +
+                    "VALUES" + "(?, ?, ?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, p.getIdMovie());
-            preparedstament.setInt(2, p.getIdActor());
-            preparedstament.setString(3, p.getPersonaje());
-
+            preparedstament.setInt(1, Math.toIntExact((Long) id));
+            preparedstament.setInt(2, Math.toIntExact((Long) id));
+            preparedstament.setString(3, String.valueOf(name));
+            preparedstament.setString(4, String.valueOf(character));
 
             preparedstament.executeUpdate();
 
