@@ -14,8 +14,6 @@ import java.net.URL;
  */
 public class themovieDBproject {
 
-
-
     public static String getHTML(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();
         URL url = new URL(urlToRead);
@@ -98,7 +96,6 @@ public class themovieDBproject {
 
     }
 
-
     public static void SJC(String cadena) {
 
         Object obj02 = JSONValue.parse(cadena);
@@ -112,8 +109,6 @@ public class themovieDBproject {
         }
     }
 
-
-
     public static void SJP(String cadena) {
         Object obj02 = JSONValue.parse(cadena);
         JSONObject arra02 = (JSONObject) obj02;
@@ -122,7 +117,11 @@ public class themovieDBproject {
         for (int i = 0; i < arra03.size(); i++) {
 
             JSONObject jb = (JSONObject) arra03.get(i);
-            insertSQLite.listaAXM(jb.get("id"), jb.get("name"), jb.get("character"));
+            Personajes p = new Personajes();
+            p.setidMovie(arra02.get("id"));
+            p.setidActor(jb.get("id"));
+            p.setPersonaje(jb.get("character"));
+            //insertSQLite.listaAXM(arra02.get("id") ,jb.get("id"), jb.get("name"), jb.get("character"));
         }
     }
 }

@@ -75,7 +75,7 @@ public class insertSQLite {
     }
 
 
-    public static void listaAXM(Object id, Object name, Object character) {
+    public static void listaAXM(Object movieId, Object id, Object character) {
 
         Connection c = null;
         Statement stmt = null;
@@ -88,13 +88,16 @@ public class insertSQLite {
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO AXM (id, Nombre, Personaje) " +
+            String sql = "INSERT INTO AXM ( movieId ,id, Personaje) " +
                     "VALUES" + "(?, ?, ?);";
 
+            Personajes p = new Personajes();
+
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, Math.toIntExact((Long) id));
-            preparedstament.setString(2, String.valueOf(name));
-            preparedstament.setString(3, String.valueOf(character));
+            preparedstament.setInt(1, p.getIdMovie());
+            preparedstament.setInt(2, p.getIdActor());
+            preparedstament.setString(3, p.getPersonaje());
+
 
             preparedstament.executeUpdate();
 
