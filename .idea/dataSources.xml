@@ -7,7 +7,7 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="Films" uuid="1a79c744-f09c-4030-9d31-3f911c86ba9a">
+    <data-source source="LOCAL" name="Films" uuid="f29f53ce-84a6-46b4-8569-62fed2a93166">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>

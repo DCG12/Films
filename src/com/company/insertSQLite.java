@@ -17,7 +17,7 @@ public class insertSQLite {
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -42,14 +42,14 @@ public class insertSQLite {
         }
         System.out.println("Records created successfully");
     }
-    public static void listaActores(Object id, Object name) {
+    public static void listaActores(int id, String name) {
 
         Connection c = null;
         Statement stmt = null;
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -59,8 +59,8 @@ public class insertSQLite {
                     "VALUES" + "(?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, Math.toIntExact((Long) id));
-            preparedstament.setString(2, String.valueOf(name));
+            preparedstament.setInt(1, id);
+            preparedstament.setString(2, name);
 
             preparedstament.executeUpdate();
 
@@ -75,27 +75,28 @@ public class insertSQLite {
     }
 
 
-    public static void listaAXM(Object movieId, Object id, Object name, Object character) {
+    public static void listaPersonajes( int movie_id, int actor_id, int cast_id, String character) {
 
         Connection c = null;
         Statement stmt = null;
         try {
 
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:Films1.db");
+            c = DriverManager.getConnection("jdbc:sqlite:Films.db");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();
 
-            String sql = "INSERT INTO AXM ( movieId ,idActor, Actor, Personaje) " +
-                    "VALUES" + "(?, ?, ?, ?);";
+            String sql = "INSERT INTO AXM (movieId, idActor, cast_id, Personaje) " +
+                    "VALUES" + "( ?, ?, ?, ?);";
 
             PreparedStatement preparedstament = c.prepareStatement(sql);
-            preparedstament.setInt(1, Math.toIntExact((Long) id));
-            preparedstament.setInt(2, Math.toIntExact((Long) id));
-            preparedstament.setString(3, String.valueOf(name));
-            preparedstament.setString(4, String.valueOf(character));
+
+            preparedstament.setInt(1, movie_id);
+            preparedstament.setInt(2, actor_id);
+            preparedstament.setInt(3, cast_id);
+            preparedstament.setString(4, character);
 
             preparedstament.executeUpdate();
 
@@ -108,4 +109,5 @@ public class insertSQLite {
         }
         System.out.println("Records created successfully");
     }
+
 }
